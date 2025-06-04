@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <title>Frontend Mentor | Huddle landing page with curved sections</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Poppins:wght@700&display=swap");
+
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      font-size: 1.125rem;
+      font-family: "Open Sans", sans-serif;
+      color: hsl(192, 100%, 9%);
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Poppins", sans-serif;
+      margin-bottom: 1.5rem;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 3rem 5rem;
+    }
+
+    nav button {
+      padding: 0.5rem 3rem;
+      color: hsl(322, 100%, 66%);
+      border: 1px solid hsl(322, 100%, 66%);
+      border-radius: 2rem;
+      background: transparent;
+      font-weight: 600;
+      font-family: "Open Sans", sans-serif;
+      cursor: pointer;
+    }
+
+    nav button:hover {
+      color: hsl(321, 100%, 78%);
+      border: 1px solid hsl(321, 100%, 78%);
+    }
+
+    header {
+      max-width: 1100px;
+      text-align: center;
+      margin: 7rem auto;
+    }
+
+    .hero-section h1 {
+      font-size: 2.85rem;
+    }
+
+    .hero-section p {
+      max-width: 550px;
+      margin: 0 auto 2rem auto;
+    }
+
+    .action-button {
+      color: white;
+      background: hsl(322, 100%, 66%);
+      padding: 1.4rem 6rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 2rem;
+      box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.25);
+      cursor: pointer;
+    }
+
+    .action-button:hover {
+      background: hsl(321, 100%, 78%);
+    }
+
+    .hero-section img {
+      margin: 5rem auto;
+      width: 100%;
+      height: 100%;
+    }
+
+    .data-display {
+      margin: 0 5rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .data-display img {
+      float: left;
+    }
+
+    .data-display h1 {
+      font-size: 4.6rem;
+      margin-bottom: 0.5rem;
+      font-family: "Open Sans", sans-serif;
+    }
+
+    .data-display p {
+      opacity: 0.6;
+    }
+
+    .feature-block {
+      margin: 5rem auto;
+    }
+
+    .wave-top-desktop,
+    .wave-bottom-desktop {
+      display: block;
+      width: 100%;
+    }
+
+    .wave-top-mobile,
+    .wave-bottom-mobile {
+      display: none;
+    }
+
+    .feature-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+      padding: 5rem;
+    }
+
+    .light-background:nth-of-type(1),
+    .light-background:nth-of-type(2) { /* Targeting the first and third .feature-content which now use this class */
+      background: hsl(207, 100%, 98%);
+    }
+
+    .feature-content img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    .light-background:nth-of-type(1) img,
+    .light-background:nth-of-type(2) img {
+      order: 2;
+    }
+
+    .light-background:nth-of-type(1) .feature-text-area,
+    .light-background:nth-of-type(2) .feature-text-area {
+      order: 1;
+    }
+
+    .feature-content h2 {
+      font-size: 2.5rem;
+    }
+
+    .cta-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: max-content;
+      margin: 10rem auto;
+    }
+
+    .cta-section h2 {
+      font-size: 2rem;
+    }
+
+    .site-footer {
+      padding: 5rem;
+      background: hsl(192, 100%, 9%);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .company-info,
+    .newsletter-signup-area {
+      max-width: 420px;
+      margin: 0 1rem;
+    }
+
+    #footer-brand-logo {
+      filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(125deg) brightness(103%) contrast(103%);
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-phone,
+    .contact-email {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1rem auto;
+    }
+
+    .contact-email a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .contact-email a:hover {
+      color: rgb(52, 204, 250);
+      text-decoration: underline;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1.5rem;
+      margin: 3rem 0 1rem 0;
+    }
+
+    .social-links i {
+      color: white;
+      font-size: 2.5rem;
+    }
+
+    .social-links i:hover {
+      color: rgb(52, 204, 250);
+    }
+
+    .newsletter-signup-area h3 {
+      font-size: 1.8rem;
+      font-family: "Open Sans", sans-serif;
+      text-transform: uppercase;
+    }
+
+    .newsletter-signup-area form {
+      display: grid;
+      grid-template-columns: minmax(auto, 400px) auto;
+      gap: 2rem;
+      margin-top: 1.5rem;
+      margin-left: 1rem;
+    }
+
+    .input-wrapper input {
+      width: 100%;
+      height: 3rem;
+      outline: none;
+      border: none;
+      border-radius: 0.3rem;
+      padding-left: 1rem;
+    }
+
+    .input-wrapper #email-error {
+      color: hsl(0, 100%, 63%);
+      font-size: 0.8rem;
+      margin: 0.5rem 0;
+      display: none;
+    }
+
+    .newsletter-signup-area form button {
+      color: white;
+      background: hsl(322, 100%, 66%);
+      height: 3rem;
+      outline: none;
+      border: none;
+      border-radius: 0.3rem;
+      padding: 0.5rem 3rem;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+
+    .newsletter-signup-area form button:hover {
+      background: hsl(321, 100%, 78%);
+    }
+
+    @media (max-width: 769px) {
+      body {
+        font-size: 1rem;
+      }
+
+      nav {
+        padding: 3rem;
+      }
+
+      #nav-brand-logo {
+        max-width: 10rem;
+      }
+
+      nav button {
+        padding: 0.4rem 1.2rem;
+      }
+
+      .hero-section h1 {
+        font-size: 2rem;
+      }
+
+      .hero-section p {
+        margin: 0 auto 2rem auto;
+      }
+
+      .action-button {
+        padding: 1rem 3rem;
+      }
+
+      .hero-section img {
+        padding: 0 3rem;
+      }
+
+      .data-display {
+        flex-direction: column;
+        gap: 5rem;
+      }
+
+      .data-display div {
+        max-width: 250px;
+        margin: 0 auto;
+      }
+
+      .feature-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 5rem 2rem;
+      }
+
+      .light-background:nth-of-type(1) img,
+      .light-background:nth-of-type(2) img {
+        order: 1;
+      }
+
+      .light-background:nth-of-type(1) .feature-text-area,
+      .light-background:nth-of-type(2) .feature-text-area {
+        order: 2;
+      }
+
+      .feature-content h2 {
+        font-size: 1.7rem;
+      }
+
+      .cta-section h2 {
+        font-size: 1.1rem;
+      }
+
+      .site-footer {
+        flex-direction: column-reverse;
+        gap: 5rem;
+        padding: 5rem 3rem;
+      }
+
+      .company-info,
+      .newsletter-signup-area {
+        margin: 0;
+      }
+
+      #footer-brand-logo {
+        max-width: 15rem;
+        margin-bottom: 2rem;
+      }
+
+      .contact-phone,
+      .contact-email {
+        margin: 1.5rem auto;
+      }
+
+      .social-links a i {
+        font-size: 2rem;
+      }
+
+      .newsletter-signup-area form {
+        display: grid;
+        grid-template-columns: auto;
+        justify-items: end;
+        gap: 1rem;
+        margin-top: 2rem;
+        margin-left: 0;
+      }
+
+      .newsletter-signup-area form .input-wrapper {
+        width: 100%;
+      }
+
+      .input-wrapper input {
+        width: 100%;
+      }
+
+      .input-wrapper #email-error {
+        text-align: right;
+      }
+
+      .newsletter-signup-area .newsletter-signup-area form button {
+        width: max-content;
+      }
+    }
+
+    @media (max-width: 426px) {
+      nav {
+        padding: 3rem 2rem;
+      }
+
+      #nav-brand-logo {
+        max-width: 7rem;
+      }
+
+      .hero-section p {
+        margin: 0 2rem 2rem 2rem;
+      }
+
+      .data-display {
+        margin: 0 2rem;
+      }
+
+      .wave-top-desktop,
+      .wave-bottom-desktop {
+        display: none;
+      }
+
+      .wave-top-mobile,
+      .wave-bottom-mobile {
+        display: block;
+        width: 100%;
+      }
+
+      #footer-brand-logo {
+        max-width: 12rem;
+      }
+    }
+
+    .attribution {
+      font-size: 11px;
+      text-align: left;
+    }
+
+    .attribution a {
+      color: white;
+      text-decoration: underline;
+    }
+
+    .attribution a:hover {
+      text-decoration: none;
+      color: rgb(52, 204, 250);
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="#" aria-label="logo"><img src="./images/logo.svg" alt="logo" id="nav-brand-logo"></a>
+    <button>Try It Free</button>
+  </nav>
+
+  <header>
+    <section class="hero-section">
+      <h1>Build The Community Your Fans Will Love</h1>
+      <p>Huddle re-imagines the way we build communities. You have a voice, but so does your audience.
+        Create connections with your users as you engage in genuine discussion.</p>
+      <button class="action-button">Get Started For Free</button>
+      <img src="./images/screen-mockups.svg" alt="screen-mockups">
+    </section>
+    <div class="data-display">
+      <div>
+        <img src="./images/icon-communities.svg" alt="icon-communities">
+        <h1>1.4k+</h1>
+        <p>Communities Formed</p>
+      </div>
+      <div>
+        <img src="./images/icon-messages.svg" alt="icon-messages">
+        <h1>2.7m+</h1>
+        <p>Messages Sent</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <div class="feature-block">
+      <img src="./images/bg-section-top-desktop-1.svg" alt="bg-section-top-desktop-1" class="wave-top-desktop">
+      <img src="./images/bg-section-top-mobile-1.svg" alt="bg-section-top-mobile-1" class="wave-top-mobile">
+      <div class="feature-content light-background">
+        <img src="./images/illustration-grow-together.svg" alt="illustration-grow-together">
+        <section class="feature-text-area">
+          <h2>Grow Together</h2>
+          <p>Generate meaningful discussions with your audience and build a strong, loyal community.
+            Think of the insightful conversations you miss out on with a feedback form.</p>
+        </section>
+      </div>
+      <img src="./images/bg-section-bottom-desktop-1.svg" alt="bg-section-bottom-desktop-1"
+        class="wave-bottom-desktop">
+      <img src="./images/bg-section-bottom-mobile-1.svg" alt="bg-section-bottom-mobile-1" class="wave-bottom-mobile">
+    </div>
+
+    <div class="feature-block feature-content">
+      <img src="./images/illustration-flowing-conversation.svg" alt="illustration-flowing-conversation">
+      <section class="feature-text-area">
+        <h2>Flowing Conversations</h2>
+        <p>You wouldn't paginate a conversation in real life, so why do it online? Our threads
+          have just-in-time loading for a more natural flow.</p>
+      </section>
+    </div>
+
+    <div class="feature-block">
+      <img src="./images/bg-section-top-desktop-2.svg" alt="bg-section-top-desktop-2" class="wave-top-desktop">
+      <img src="./images/bg-section-top-mobile-2.svg" alt="bg-section-top-mobile-2" class="wave-top-mobile">
+      <div class="feature-content light-background">
+        <img src="./images/illustration-your-users.svg" alt="illustration-your-users">
+        <section class="feature-text-area">
+          <h2>Your Users</h2>
+          <p>It takes no time at all to integrate Huddle with your app's authentication solution.
+            This means, once signed in to your app, your users can start chatting immediately.</p>
+        </section>
+      </div>
+      <img src="./images/bg-section-bottom-desktop-2.svg" alt="bg-section-bottom-desktop-2"
+        class="wave-bottom-desktop">
+      <img src="./images/bg-section-bottom-mobile-2.svg" alt="bg-section-bottom-mobile-2" class="wave-bottom-mobile">
+    </div>
+  </main>
+
+  <section class="cta-section">
+    <h2>Ready To Build Your Community?</h2>
+    <button class="action-button">Get Started For Free</button>
+  </section>
+
+  <footer>
+    <img src="./images/bg-footer-top-desktop.svg" alt="bg-footer-top-desktop" class="wave-top-desktop"
+      style="margin-bottom: -2px;">
+    <img src="./images/bg-footer-top-mobile.svg" alt="bg-footer-top-mobile" class="wave-top-mobile"
+      style="margin-bottom: -2px;">
+    <div class="site-footer">
+      <div class="company-info">
+        <div>
+          <img src="./images/logo.svg" alt="logo" id="footer-brand-logo">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nulla quam, hendrerit lacinia
+            vestibulum a, ultrices quis sem.</p>
+          <div class="contact-phone">
+            <img src="./images/icon-phone.svg" alt="icon-phone">
+            <p>Phone: +1-543-123-4567</p>
+          </div>
+          <div class="contact-email">
+            <img src="./images/icon-email.svg" alt="icon-email">
+            <a href="#" aria-label="email">example@huddle.com</a>
+          </div>
+        </div>
+        <div class="social-links">
+          <a href="#" aria-label="facebook"><i class="fab fa-facebook-square"></i></a>
+          <a href="#" aria-label="instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="twitter"><i class="fab fa-twitter-square"></i></a>
+        </div>
+      </div>
+      <div class="newsletter-signup-area">
+        <section>
+          <h3>Newsletter</h3>
+          <p>To recieve tips on how to grow your community, sign up to our weekly newsletter. We'll never
+            send you spam or pass on your email address</p>
+        </section>
+        <form action="#" id="form">
+          <div class="input-wrapper">
+            <input type="email" id="mail">
+            <p id="email-error">Check your email please</p>
+          </div>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </footer>
+</body>
+
+  </html>
